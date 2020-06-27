@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
     private Button rightButton;
     [SerializeField]
     private Button leftButton;
+    [SerializeField]
+    private GameObject apple;
 
     private void Awake()
     {
@@ -19,6 +21,12 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        
+        if (transform.childCount == 0)
+        {
+            float positionX = Random.Range(-16.5f, 16.5f);
+            float positionZ = Random.Range(-16.5f, 16.5f);
+            GameObject appleClone = Instantiate(apple, new Vector3(positionX, 0.5f, positionZ), transform.rotation);
+            appleClone.transform.parent = gameObject.transform;
+        }
     }
 }
