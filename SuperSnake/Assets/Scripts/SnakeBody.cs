@@ -7,7 +7,7 @@ public class SnakeBody : MonoBehaviour
 
     private SnakeHead snakeHead;
     private int applesNumber;
-
+  
     private void Awake()
     {
         snakeHead = FindObjectOfType<SnakeHead>();

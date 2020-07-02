@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour
 
     private SnakeHead snakeHead;
     private int applesNumber;
+    private int livesNumber;
 
     private void Awake()
     {
@@ -41,6 +42,7 @@ public class GameController : MonoBehaviour
 
         snakeHead = FindObjectOfType<SnakeHead>();
         applesNumber = 0;
+        livesNumber = 4;
 
         Time.timeScale = 0;
     }
@@ -61,12 +63,22 @@ public class GameController : MonoBehaviour
         }
 
         applesNumber = snakeHead.GetNumberOfApples();
+        livesNumber = snakeHead.GetNumberOfLives();
         if (applesNumber >= 30)
         {
             informationText.text = "GRATULACJE!!!";
             nextLevelButton.gameObject.SetActive(true);
             Time.timeScale = 0;
         }
+        if (livesNumber <= 0)
+        {
+            informationText.text = "Oooo! Przegrałeś";
+        }
+    }
+
+    public int GetNumberOfChildren()
+    {
+        return transform.childCount;
     }
 
     public void StartGame()
@@ -78,6 +90,11 @@ public class GameController : MonoBehaviour
     public void LoadLevel_2()
     {
         SceneManager.LoadScene("Level_2");
+    }
+
+    public void LoadLevel_3()
+    {
+        SceneManager.LoadScene("Level_3");
     }
 
 }

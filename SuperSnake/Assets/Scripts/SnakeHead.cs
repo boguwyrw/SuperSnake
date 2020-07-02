@@ -19,6 +19,8 @@ public class SnakeHead : MonoBehaviour
     private Text snakeLivesText;
     private Vector3 snakeStartPosition;
     private Quaternion snakeStartRotation;
+    private Wall wallFile;
+    private bool snakeBodyCollision;
 
     private void Awake()
     {
@@ -31,10 +33,19 @@ public class SnakeHead : MonoBehaviour
         SnakeLives();
         snakeStartPosition = transform.position;
         snakeStartRotation = transform.rotation;
+        wallFile = FindObjectOfType<Wall>();
+        snakeBodyCollision = false;
     }
 
     private void Update()
     {
+        snakeBodyCollision = wallFile.GetSnakeBodyCollide();
+
+        if (snakeBodyCollision)
+        {
+            SnakeRestart();
+        }
+
         SnakeMovement();
         SnakeSpeedsUp();
         ApplesCounting();
@@ -115,6 +126,17 @@ public class SnakeHead : MonoBehaviour
         }
     }
 
+    private void SnakeRestart()
+    {
+        snake.Clear();
+        transform.position = snakeStartPosition;
+        transform.rotation = snakeStartRotation;
+        snakeSpeed = 4.0f;
+        numberOfLives--;
+        numberOfApples = 0;
+        snake.Add(gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Apple"))
@@ -126,19 +148,18 @@ public class SnakeHead : MonoBehaviour
 
         if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("SnakeBody"))
         {
-            snake.Clear();
-            transform.position = snakeStartPosition;
-            transform.rotation = snakeStartRotation;
-            snakeSpeed = 4.0f;
-            numberOfLives--;
-            numberOfApples = 0;
-            snake.Add(gameObject);
+            SnakeRestart();
         }
     }
 
     public int GetNumberOfApples()
     {
         return numberOfApples;
+    }
+
+    public int GetNumberOfLives()
+    {
+        return numberOfLives;
     }
 
     public void TurnRight()
