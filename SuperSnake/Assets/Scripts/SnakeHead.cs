@@ -6,21 +6,21 @@ using UnityEngine.UI;
 public class SnakeHead : MonoBehaviour
 {
 
+    public static int numberOfLives = 4;
     [SerializeField]
     private GameObject snakeBody;
     private List<GameObject> snake = new List<GameObject>();
     private float distance;
     private float snakeSpeed;
     private int numberOfApples;
-    private int numberOfLives;
     [SerializeField]
     private Text numberOfApplesText;
     [SerializeField]
     private Text snakeLivesText;
     private Vector3 snakeStartPosition;
     private Quaternion snakeStartRotation;
-    private Wall wallFile;
-    private bool snakeBodyCollision;
+    //private Wall wallFile;
+    //private bool snakeBodyCollision;
 
     private void Awake()
     {
@@ -28,24 +28,26 @@ public class SnakeHead : MonoBehaviour
         distance = 0.0f;
         snakeSpeed = 4.0f;
         numberOfApples = 0;
-        numberOfLives = 4;
         ApplesCounting();
         SnakeLives();
         snakeStartPosition = transform.position;
         snakeStartRotation = transform.rotation;
-        wallFile = FindObjectOfType<Wall>();
-        snakeBodyCollision = false;
+        //wallFile = FindObjectOfType<Wall>();
+        //snakeBodyCollision = false;
     }
 
     private void Update()
     {
+        /*
+        Wyprobowac StartCoroutine() i IEnumerator
+        
         snakeBodyCollision = wallFile.GetSnakeBodyCollide();
 
         if (snakeBodyCollision)
         {
             SnakeRestart();
         }
-
+        */
         SnakeMovement();
         SnakeSpeedsUp();
         ApplesCounting();
@@ -56,6 +58,7 @@ public class SnakeHead : MonoBehaviour
     private void SnakeMovement()
     {
         transform.Translate(Vector3.forward * snakeSpeed * Time.deltaTime);
+        transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
 
         if (snake.Count > 1)
         {
@@ -139,13 +142,14 @@ public class SnakeHead : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.gameObject.CompareTag("Apple"))
         {
             Destroy(other.gameObject);
             numberOfApples++;
             SnakeGrow();
         }
-
+        
         if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("SnakeBody"))
         {
             SnakeRestart();
@@ -155,11 +159,6 @@ public class SnakeHead : MonoBehaviour
     public int GetNumberOfApples()
     {
         return numberOfApples;
-    }
-
-    public int GetNumberOfLives()
-    {
-        return numberOfLives;
     }
 
     public void TurnRight()

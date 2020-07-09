@@ -409,7 +409,6 @@ GameObject:
   - component: {fileID: 301630230}
   - component: {fileID: 301630229}
   - component: {fileID: 301630232}
-  - component: {fileID: 301630233}
   m_Layer: 0
   m_Name: Wall_3
   m_TagString: Wall
@@ -424,9 +423,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301630227}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -10, y: 2, z: 0}
-  m_LocalScale: {x: 8, y: 4, z: 1}
+  m_LocalScale: {x: 10, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 599443122}
   m_RootOrder: 6
@@ -439,7 +438,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301630227}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -505,18 +504,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &301630233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301630227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ac625e15468f74ebb032a87417012d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &370706103
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,7 +645,6 @@ GameObject:
   - component: {fileID: 472845767}
   - component: {fileID: 472845766}
   - component: {fileID: 472845769}
-  - component: {fileID: 472845770}
   m_Layer: 0
   m_Name: Wall_4
   m_TagString: Wall
@@ -673,9 +659,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 472845764}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 10, y: 2, z: 0}
-  m_LocalScale: {x: 8, y: 4, z: 1}
+  m_LocalScale: {x: 10, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 599443122}
   m_RootOrder: 7
@@ -688,7 +674,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 472845764}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -754,18 +740,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &472845770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472845764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ac625e15468f74ebb032a87417012d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &577828475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +1051,6 @@ GameObject:
   - component: {fileID: 639609590}
   - component: {fileID: 639609589}
   - component: {fileID: 639609592}
-  - component: {fileID: 639609593}
   m_Layer: 0
   m_Name: Wall_1
   m_TagString: Wall
@@ -1107,7 +1080,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639609587}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1173,18 +1146,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &639609593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639609587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ac625e15468f74ebb032a87417012d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &720700205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,7 +2134,6 @@ GameObject:
   - component: {fileID: 1800421875}
   - component: {fileID: 1800421874}
   - component: {fileID: 1800421877}
-  - component: {fileID: 1800421878}
   m_Layer: 0
   m_Name: Wall_2
   m_TagString: Wall
@@ -2203,7 +2163,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800421872}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2269,18 +2229,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1800421878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800421872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ac625e15468f74ebb032a87417012d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1919914086
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,7 +63,7 @@ public class GameController : MonoBehaviour
         }
 
         applesNumber = snakeHead.GetNumberOfApples();
-        livesNumber = snakeHead.GetNumberOfLives();
+        livesNumber = SnakeHead.numberOfLives;
         if (applesNumber >= 30)
         {
             informationText.text = "GRATULACJE!!!";
