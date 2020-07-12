@@ -73,6 +73,7 @@ public class GameController : MonoBehaviour
         if (livesNumber <= 0)
         {
             informationText.text = "Oooo! Przegrałeś";
+            Time.timeScale = 0;
         }
     }
 

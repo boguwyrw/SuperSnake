@@ -4,32 +4,20 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    /*
-    private bool snakeBodyCollide;
-    private GameController gameController;
-    private int numberOfChildren;
+
+    private SnakeHead snakeHead;
 
     private void Awake()
     {
-        snakeBodyCollide = false;
-        gameController = FindObjectOfType<GameController>();
-        numberOfChildren = 0;
+        snakeHead = FindObjectOfType<SnakeHead>();
     }
 
-    private void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        numberOfChildren = gameController.GetNumberOfChildren();
-        if (numberOfChildren == 0)
+        if (collision.gameObject.CompareTag("SnakeBody"))
         {
-            snakeBodyCollide = false;
+            snakeHead.SnakeRestart();
         }
-
-        Debug.Log(snakeBodyCollide);
     }
 
-    public bool GetSnakeBodyCollide()
-    {
-        return snakeBodyCollide;
-    }
-    */
 }

@@ -19,8 +19,6 @@ public class SnakeHead : MonoBehaviour
     private Text snakeLivesText;
     private Vector3 snakeStartPosition;
     private Quaternion snakeStartRotation;
-    //private Wall wallFile;
-    //private bool snakeBodyCollision;
 
     private void Awake()
     {
@@ -32,22 +30,10 @@ public class SnakeHead : MonoBehaviour
         SnakeLives();
         snakeStartPosition = transform.position;
         snakeStartRotation = transform.rotation;
-        //wallFile = FindObjectOfType<Wall>();
-        //snakeBodyCollision = false;
     }
 
     private void Update()
     {
-        /*
-        Wyprobowac StartCoroutine() i IEnumerator
-        
-        snakeBodyCollision = wallFile.GetSnakeBodyCollide();
-
-        if (snakeBodyCollision)
-        {
-            SnakeRestart();
-        }
-        */
         SnakeMovement();
         SnakeSpeedsUp();
         ApplesCounting();
@@ -101,11 +87,11 @@ public class SnakeHead : MonoBehaviour
     {
         if (numberOfApples > 1)
         {
-            numberOfApplesText.text = "Apples: " + numberOfApples.ToString();
+            numberOfApplesText.text = "Jabłka: " + numberOfApples.ToString();
         }
         else
         {
-            numberOfApplesText.text = "Apple: " + numberOfApples.ToString();
+            numberOfApplesText.text = "Jabłko: " + numberOfApples.ToString();
         }
     }
 
@@ -113,11 +99,11 @@ public class SnakeHead : MonoBehaviour
     {
         if (numberOfLives > 1)
         {
-            snakeLivesText.text = "Lives: " + numberOfLives.ToString();
+            snakeLivesText.text = "Życia: " + numberOfLives.ToString();
         }
         else
         {
-            snakeLivesText.text = "Life: " + numberOfLives.ToString();
+            snakeLivesText.text = "Życie: " + numberOfLives.ToString();
         }
     }
 
@@ -128,8 +114,8 @@ public class SnakeHead : MonoBehaviour
             Time.timeScale = 0;
         }
     }
-
-    private void SnakeRestart()
+    // metoda zostanie przekazana do Wall
+    public void SnakeRestart()
     {
         snake.Clear();
         transform.position = snakeStartPosition;
