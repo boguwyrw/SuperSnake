@@ -646,6 +646,7 @@ MonoBehaviour:
   snakeLivesText: {fileID: 2015017599}
   informationText: {fileID: 887896605}
   apple: {fileID: 203481747119332159, guid: e1dc6a7bdee3b1f419c1a9cdff4d7901, type: 3}
+  snakeHead: {fileID: 265466370}
 --- !u!1 &472845764
 GameObject:
   m_ObjectHideFlags: 0

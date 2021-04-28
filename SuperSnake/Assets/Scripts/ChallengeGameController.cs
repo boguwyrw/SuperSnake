@@ -1,16 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameController : MonoBehaviour
+public class ChallengeGameController : MonoBehaviour
 {
-
     [SerializeField] private Button startButton = null;
     [SerializeField] private Button rightButton = null;
     [SerializeField] private Button leftButton = null;
-    [SerializeField] private Button nextLevelButton = null;
     [SerializeField] private Text numberOfApplesText = null;
     [SerializeField] private Text snakeLivesText = null;
     [SerializeField] private Text informationText = null;
@@ -19,23 +16,18 @@ public class GameController : MonoBehaviour
 
     private int applesNumber;
     private int livesNumber;
-    private int winerPoints;
 
     private void Awake()
     {
         startButton.transform.position = new Vector3(0.5f * Screen.width, 0.5f * Screen.height, 0.0f);
         rightButton.transform.position = new Vector3(0.88f * Screen.width, 0.12f * Screen.height, 0.0f);
         leftButton.transform.position = new Vector3(0.12f * Screen.width, 0.12f * Screen.height, 0.0f);
-        nextLevelButton.transform.position = new Vector3(0.5f * Screen.width, 0.4f * Screen.height, 0.0f);
         numberOfApplesText.transform.position = new Vector3(0.1f * Screen.width, 0.9f * Screen.height, 0.0f);
         snakeLivesText.transform.position = new Vector3(0.9f * Screen.width, 0.9f * Screen.height, 0.0f);
         informationText.transform.position = new Vector3(0.5f * Screen.width, 0.6f * Screen.height, 0.0f);
 
-        nextLevelButton.gameObject.SetActive(false);
-
         applesNumber = 0;
         livesNumber = 4;
-        winerPoints = 30;
 
         Time.timeScale = 0;
     }
@@ -47,7 +39,7 @@ public class GameController : MonoBehaviour
             Application.Quit();
         }
 
-        if (transform.childCount == 0 && applesNumber < winerPoints-1)
+        if (transform.childCount == 0)
         {
             float positionX = Random.Range(-16.5f, 16.5f);
             float positionZ = Random.Range(-16.5f, 16.5f);
@@ -57,16 +49,14 @@ public class GameController : MonoBehaviour
 
         applesNumber = snakeHead.GetNumberOfApples();
         livesNumber = SnakeHead.numberOfLives;
-        if (applesNumber == winerPoints)
-        {
-            informationText.text = "GRATULACJE!!!";
-            nextLevelButton.gameObject.SetActive(true);
-            
-            Time.timeScale = 0;
-        }
+
         if (livesNumber <= 0)
         {
-            informationText.text = "Oooo! Przegrałeś";
+            if (applesNumber != 1)
+                informationText.text = "Twój rekord to: " + applesNumber.ToString() + " jabłek";
+            else if (applesNumber == 1)
+                informationText.text = "Twój rekord to: " + applesNumber.ToString() + " jabłko";
+
             Time.timeScale = 0;
         }
     }
@@ -81,15 +71,4 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
         startButton.gameObject.SetActive(false);
     }
-
-    public void LoadLevel_2()
-    {
-        SceneManager.LoadScene("Level_2");
-    }
-
-    public void LoadLevel_3()
-    {
-        SceneManager.LoadScene("Level_3");
-    }
-
 }

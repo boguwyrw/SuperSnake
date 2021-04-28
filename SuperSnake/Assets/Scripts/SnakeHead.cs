@@ -57,7 +57,7 @@ public class SnakeHead : MonoBehaviour
             for (int i = 0; i < snake.Count - 1; i++)
             {
                 distance = Vector3.Distance(snake[i].transform.position, snake[i + 1].transform.position);
-                if (distance >= 0.98f)
+                if (distance >= 0.99f)
                 {
                     snake[i + 1].transform.Translate(Vector3.forward * snakeSpeed * Time.deltaTime);
                 }
