@@ -8,9 +8,9 @@ public class MainMenuController : MonoBehaviour
 {
 
     [SerializeField]
-    private Button newGameButton;
+    private Button newGameButton = null;
     [SerializeField]
-    private Button exitButton;
+    private Button exitButton = null;
 
     private void Awake()
     {

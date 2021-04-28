@@ -5,19 +5,22 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
 
-    private SnakeHead snakeHead;
+    [SerializeField] private SnakeHead snakeHead = null;
+    private int numberOfHits = 0;
 
-    private void Awake()
+    private void Update()
     {
-        snakeHead = FindObjectOfType<SnakeHead>();
+        if (snakeHead.GetNumberOfApples() == 1)
+            numberOfHits = 0;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("SnakeBody"))
         {
-            snakeHead.SnakeRestart();
+            numberOfHits++;
+            if (numberOfHits == 1)
+                snakeHead.SnakeRestart();
         }
     }
-
 }

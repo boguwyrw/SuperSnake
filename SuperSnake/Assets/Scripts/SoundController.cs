@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SoundController : MonoBehaviour
 {
+    private AudioSource audioSource;
 
-    void Start()
+    private void Start()
     {
         DontDestroyOnLoad(this);
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()

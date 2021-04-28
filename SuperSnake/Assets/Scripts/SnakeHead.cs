@@ -8,15 +8,15 @@ public class SnakeHead : MonoBehaviour
 
     public static int numberOfLives = 4;
     [SerializeField]
-    private GameObject snakeBody;
+    private GameObject snakeBody = null;
     private List<GameObject> snake = new List<GameObject>();
     private float distance;
     private float snakeSpeed;
     private int numberOfApples;
     [SerializeField]
-    private Text numberOfApplesText;
+    private Text numberOfApplesText = null;
     [SerializeField]
-    private Text snakeLivesText;
+    private Text snakeLivesText = null;
     private Vector3 snakeStartPosition;
     private Quaternion snakeStartRotation;
 
@@ -150,11 +150,15 @@ public class SnakeHead : MonoBehaviour
     public void TurnRight()
     {
         transform.Rotate(new Vector3(0, 90, 0));
+        snakeHeadPositionX = transform.position.x;
+        snakeHeadPositionZ = transform.position.z;
     }
 
     public void TurnLeft()
     {
         transform.Rotate(new Vector3(0, -90, 0));
+        snakeHeadPositionX = transform.position.x;
+        snakeHeadPositionZ = transform.position.z;
     }
 
 }

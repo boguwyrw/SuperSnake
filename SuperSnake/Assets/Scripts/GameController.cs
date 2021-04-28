@@ -8,21 +8,21 @@ public class GameController : MonoBehaviour
 {
 
     [SerializeField]
-    private Button startButton;
+    private Button startButton = null;
     [SerializeField]
-    private Button rightButton;
+    private Button rightButton = null;
     [SerializeField]
-    private Button leftButton;
+    private Button leftButton = null;
     [SerializeField]
-    private Button nextLevelButton;
+    private Button nextLevelButton = null;
     [SerializeField]
-    private Text numberOfApplesText;
+    private Text numberOfApplesText = null;
     [SerializeField]
-    private Text snakeLivesText;
+    private Text snakeLivesText = null;
     [SerializeField]
-    private Text informationText;
+    private Text informationText = null;
     [SerializeField]
-    private GameObject apple;
+    private GameObject apple = null;
 
     private SnakeHead snakeHead;
     private int applesNumber;

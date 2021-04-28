@@ -22,5 +22,5 @@ public class SnakeBody : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
 }

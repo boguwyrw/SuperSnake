@@ -941,6 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ac625e15468f74ebb032a87417012d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snakeHead: {fileID: 265466370}
 --- !u!1 &720700205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,6 +2038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ac625e15468f74ebb032a87417012d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snakeHead: {fileID: 265466370}
 --- !u!1 &1919914086
 GameObject:
   m_ObjectHideFlags: 0
