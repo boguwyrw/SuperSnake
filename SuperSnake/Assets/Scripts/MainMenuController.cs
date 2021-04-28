@@ -7,10 +7,8 @@ using UnityEngine.UI;
 public class MainMenuController : MonoBehaviour
 {
 
-    [SerializeField]
-    private Button newGameButton = null;
-    [SerializeField]
-    private Button exitButton = null;
+    [SerializeField] private Button newGameButton = null;
+    [SerializeField] private Button exitButton = null;
 
     private void Awake()
     {

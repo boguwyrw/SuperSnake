@@ -7,16 +7,13 @@ public class SnakeHead : MonoBehaviour
 {
 
     public static int numberOfLives = 4;
-    [SerializeField]
-    private GameObject snakeBody = null;
+    public static float snakeSpeed = 4;
+    [SerializeField] private GameObject snakeBody = null;
     private List<GameObject> snake = new List<GameObject>();
     private float distance;
-    private float snakeSpeed;
     private int numberOfApples;
-    [SerializeField]
-    private Text numberOfApplesText = null;
-    [SerializeField]
-    private Text snakeLivesText = null;
+    [SerializeField] private Text numberOfApplesText = null;
+    [SerializeField] private Text snakeLivesText = null;
     private Vector3 snakeStartPosition;
     private Quaternion snakeStartRotation;
 
@@ -24,7 +21,6 @@ public class SnakeHead : MonoBehaviour
     {
         snake.Add(gameObject);
         distance = 0.0f;
-        snakeSpeed = 4.0f;
         numberOfApples = 0;
         ApplesCounting();
         SnakeLives();
@@ -34,11 +30,21 @@ public class SnakeHead : MonoBehaviour
 
     private void Update()
     {
-        SnakeMovement();
+        //SnakeMovement();
         SnakeSpeedsUp();
         ApplesCounting();
         SnakeLives();
         GameOver();
+
+        if (numberOfApples == 0)
+        {
+            snakeSpeed = 4.0f;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        SnakeMovement();
     }
 
     private void SnakeMovement()
@@ -51,15 +57,16 @@ public class SnakeHead : MonoBehaviour
             for (int i = 0; i < snake.Count - 1; i++)
             {
                 distance = Vector3.Distance(snake[i].transform.position, snake[i + 1].transform.position);
-                if (distance >= 1.0f)
+                if (distance >= 0.98f)
                 {
                     snake[i + 1].transform.Translate(Vector3.forward * snakeSpeed * Time.deltaTime);
                 }
+                /*
                 else
                 {
                     snake[i + 1].transform.Translate(Vector3.zero);
                 }
-                
+                */
                 snake[i + 1].transform.LookAt(snake[i].transform);
             }
         }
@@ -150,15 +157,10 @@ public class SnakeHead : MonoBehaviour
     public void TurnRight()
     {
         transform.Rotate(new Vector3(0, 90, 0));
-        snakeHeadPositionX = transform.position.x;
-        snakeHeadPositionZ = transform.position.z;
     }
 
     public void TurnLeft()
     {
         transform.Rotate(new Vector3(0, -90, 0));
-        snakeHeadPositionX = transform.position.x;
-        snakeHeadPositionZ = transform.position.z;
     }
-
 }

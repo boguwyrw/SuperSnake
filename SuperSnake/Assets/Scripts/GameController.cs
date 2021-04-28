@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
     private SnakeHead snakeHead;
     private int applesNumber;
     private int livesNumber;
+    private int winerPoints;
 
     private void Awake()
     {
@@ -43,6 +44,7 @@ public class GameController : MonoBehaviour
         snakeHead = FindObjectOfType<SnakeHead>();
         applesNumber = 0;
         livesNumber = 4;
+        winerPoints = 30;
 
         Time.timeScale = 0;
     }
@@ -54,7 +56,7 @@ public class GameController : MonoBehaviour
             Application.Quit();
         }
 
-        if (transform.childCount == 0)
+        if (transform.childCount == 0 && applesNumber < winerPoints-1)
         {
             float positionX = Random.Range(-16.5f, 16.5f);
             float positionZ = Random.Range(-16.5f, 16.5f);
@@ -64,10 +66,11 @@ public class GameController : MonoBehaviour
 
         applesNumber = snakeHead.GetNumberOfApples();
         livesNumber = SnakeHead.numberOfLives;
-        if (applesNumber >= 30)
+        if (applesNumber == winerPoints)
         {
             informationText.text = "GRATULACJE!!!";
             nextLevelButton.gameObject.SetActive(true);
+            
             Time.timeScale = 0;
         }
         if (livesNumber <= 0)
