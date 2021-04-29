@@ -1,18 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadGameMenuController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void StartGameLevel_1()
     {
-        
+        SceneManager.LoadScene("Level_1");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartGameLevel_2()
     {
-        
+        SceneManager.LoadScene("Level_2");
+    }
+
+    public void StartGameLevel_3()
+    {
+        SceneManager.LoadScene("Level_3");
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
