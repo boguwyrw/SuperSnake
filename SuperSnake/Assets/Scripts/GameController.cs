@@ -8,11 +8,7 @@ public class GameController : MonoBehaviour
 {
 
     [SerializeField] private Button startButton = null;
-    [SerializeField] private Button rightButton = null;
-    [SerializeField] private Button leftButton = null;
     [SerializeField] private Button nextLevelButton = null;
-    [SerializeField] private Text numberOfApplesText = null;
-    [SerializeField] private Text snakeLivesText = null;
     [SerializeField] private Text informationText = null;
     [SerializeField] private GameObject apple = null;
     [SerializeField] private SnakeHead snakeHead = null;
@@ -23,14 +19,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        startButton.transform.position = new Vector3(0.5f * Screen.width, 0.5f * Screen.height, 0.0f);
-        rightButton.transform.position = new Vector3(0.88f * Screen.width, 0.12f * Screen.height, 0.0f);
-        leftButton.transform.position = new Vector3(0.12f * Screen.width, 0.12f * Screen.height, 0.0f);
         nextLevelButton.transform.position = new Vector3(0.5f * Screen.width, 0.4f * Screen.height, 0.0f);
-        numberOfApplesText.transform.position = new Vector3(0.1f * Screen.width, 0.9f * Screen.height, 0.0f);
-        snakeLivesText.transform.position = new Vector3(0.9f * Screen.width, 0.9f * Screen.height, 0.0f);
-        informationText.transform.position = new Vector3(0.5f * Screen.width, 0.6f * Screen.height, 0.0f);
-
         nextLevelButton.gameObject.SetActive(false);
 
         applesNumber = 0;
