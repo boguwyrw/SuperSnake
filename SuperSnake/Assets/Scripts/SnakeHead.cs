@@ -118,7 +118,8 @@ public class SnakeHead : MonoBehaviour
     // metoda zostanie przekazana do Wall
     public void SnakeRestart()
     {
-        PlayerPrefs.SetInt("MaxApplesNumber", numberOfApples);
+        if(numberOfApples > PlayerPrefs.GetInt("MaxApplesNumber"))
+            PlayerPrefs.SetInt("MaxApplesNumber", numberOfApples);
         snake.Clear();
         transform.position = snakeStartPosition;
         transform.rotation = snakeStartRotation;
@@ -157,5 +158,10 @@ public class SnakeHead : MonoBehaviour
     public void TurnLeft()
     {
         transform.Rotate(new Vector3(0, -90, 0));
+    }
+
+    public void GameWasRestarted()
+    {
+        numberOfLives = 4;
     }
 }

@@ -11,7 +11,6 @@ public class SoundController : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this);
         audioSource = GetComponent<AudioSource>();
         audioSource.Play();
         madeFirstChange = false;

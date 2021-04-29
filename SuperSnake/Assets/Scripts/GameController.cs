@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
 
     [SerializeField] private Button startButton = null;
+    [SerializeField] private Button exitButton = null;
     [SerializeField] private Button nextLevelButton = null;
     [SerializeField] private Text informationText = null;
     [SerializeField] private GameObject apple = null;
@@ -21,6 +22,7 @@ public class GameController : MonoBehaviour
     {
         nextLevelButton.transform.position = new Vector3(0.5f * Screen.width, 0.4f * Screen.height, 0.0f);
         nextLevelButton.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
 
         applesNumber = 0;
         livesNumber = 4;
@@ -56,6 +58,8 @@ public class GameController : MonoBehaviour
         if (livesNumber <= 0)
         {
             informationText.text = "Oooo! Przegrałeś";
+            exitButton.gameObject.SetActive(true);
+
             Time.timeScale = 0;
         }
     }
@@ -81,4 +85,8 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("Level_3");
     }
 
+    public void ExitGame()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }

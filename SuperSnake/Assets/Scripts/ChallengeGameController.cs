@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ChallengeGameController : MonoBehaviour
 {
     [SerializeField] private Button startButton = null;
+    [SerializeField] private Button exitButton = null;
     [SerializeField] private Text informationText = null;
     [SerializeField] private Text bestScoreText = null;
     [SerializeField] private GameObject apple = null;
@@ -20,6 +22,8 @@ public class ChallengeGameController : MonoBehaviour
         applesNumber = 0;
         livesNumber = 4;
         maxApplesNumber = 0;
+        
+        exitButton.gameObject.SetActive(false);
         Time.timeScale = 0;
 
         PlayerBestScore();
@@ -48,10 +52,11 @@ public class ChallengeGameController : MonoBehaviour
         if (livesNumber <= 0)
         {
             if (applesNumber != 1)
-                informationText.text = "Twój rekord to: " + applesNumber.ToString() + " jabłek";
+                informationText.text = "Twój rekord to: " + maxApplesNumber.ToString() + " jabłek";
             else if (applesNumber == 1)
-                informationText.text = "Twój rekord to: " + applesNumber.ToString() + " jabłko";
+                informationText.text = "Twój rekord to: " + maxApplesNumber.ToString() + " jabłko";
 
+            exitButton.gameObject.SetActive(true);
             Time.timeScale = 0;
         }
     }
@@ -76,5 +81,10 @@ public class ChallengeGameController : MonoBehaviour
     {
         Time.timeScale = 1;
         startButton.gameObject.SetActive(false);
+    }
+
+    public void ExitGame()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

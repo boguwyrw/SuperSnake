@@ -6,14 +6,19 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    public void LoadGameLevel()
+    public void StartGameLevel()
     {
         SceneManager.LoadScene("Level_1");
     }
 
-    public void LoadChallengeGame()
+    public void StartChallengeGame()
     {
         SceneManager.LoadScene("Challenge");
+    }
+
+    public void LoadGameLevel()
+    {
+        SceneManager.LoadScene("LoadGameMenu");
     }
 
     public void ExitGame()
