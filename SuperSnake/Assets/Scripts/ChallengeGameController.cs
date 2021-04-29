@@ -7,18 +7,22 @@ public class ChallengeGameController : MonoBehaviour
 {
     [SerializeField] private Button startButton = null;
     [SerializeField] private Text informationText = null;
+    [SerializeField] private Text bestScoreText = null;
     [SerializeField] private GameObject apple = null;
     [SerializeField] private SnakeHead snakeHead = null;
 
     private int applesNumber;
+    private int maxApplesNumber;
     private int livesNumber;
 
     private void Awake()
     {
         applesNumber = 0;
         livesNumber = 4;
-
+        maxApplesNumber = 0;
         Time.timeScale = 0;
+
+        PlayerBestScore();
     }
 
     private void Update()
@@ -39,6 +43,8 @@ public class ChallengeGameController : MonoBehaviour
         applesNumber = snakeHead.GetNumberOfApples();
         livesNumber = SnakeHead.numberOfLives;
 
+        PlayerBestScore();
+
         if (livesNumber <= 0)
         {
             if (applesNumber != 1)
@@ -48,6 +54,17 @@ public class ChallengeGameController : MonoBehaviour
 
             Time.timeScale = 0;
         }
+    }
+
+    private void PlayerBestScore()
+    {
+        if (PlayerPrefs.HasKey("MaxApplesNumber"))
+            maxApplesNumber = PlayerPrefs.GetInt("MaxApplesNumber");
+
+        if (maxApplesNumber < applesNumber)
+            maxApplesNumber = applesNumber;
+
+        bestScoreText.text = "Najlepszy\nwynik: " + maxApplesNumber.ToString();
     }
 
     public int GetNumberOfChildren()

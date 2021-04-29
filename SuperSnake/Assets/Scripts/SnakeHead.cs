@@ -30,7 +30,6 @@ public class SnakeHead : MonoBehaviour
 
     private void Update()
     {
-        //SnakeMovement();
         SnakeSpeedsUp();
         ApplesCounting();
         SnakeLives();
@@ -61,12 +60,7 @@ public class SnakeHead : MonoBehaviour
                 {
                     snake[i + 1].transform.Translate(Vector3.forward * snakeSpeed * Time.deltaTime);
                 }
-                /*
-                else
-                {
-                    snake[i + 1].transform.Translate(Vector3.zero);
-                }
-                */
+
                 snake[i + 1].transform.LookAt(snake[i].transform);
             }
         }
@@ -124,6 +118,7 @@ public class SnakeHead : MonoBehaviour
     // metoda zostanie przekazana do Wall
     public void SnakeRestart()
     {
+        PlayerPrefs.SetInt("MaxApplesNumber", numberOfApples);
         snake.Clear();
         transform.position = snakeStartPosition;
         transform.rotation = snakeStartRotation;
