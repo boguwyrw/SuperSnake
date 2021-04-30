@@ -27,6 +27,12 @@ public class SnakeHead : MonoBehaviour
         SnakeLives();
         snakeStartPosition = transform.position;
         snakeStartRotation = transform.rotation;
+
+        if (SceneManager.GetActiveScene().name.Equals("Dark"))
+        {
+            numberOfLives = 1;
+            snakeSpeed = 6;
+        }
     }
 
     private void Update()
@@ -36,10 +42,13 @@ public class SnakeHead : MonoBehaviour
         SnakeLives();
         GameOver();
 
-        if (numberOfApples == 0)
+        if (numberOfApples == 0 && !SceneManager.GetActiveScene().name.Equals("Dark"))
         {
             snakeSpeed = 4.0f;
         }
+
+        if (numberOfLives <= 0)
+            numberOfLives = 0;
     }
 
     private void FixedUpdate()
@@ -75,13 +84,17 @@ public class SnakeHead : MonoBehaviour
 
     private void SnakeSpeedsUp()
     {
-        if (numberOfApples == 10)
+        if(!SceneManager.GetActiveScene().name.Equals("Dark"))
         {
-            snakeSpeed = 8.0f;
-        }
-        if (numberOfApples == 20)
-        {
-            snakeSpeed = 12.0f;
+            if (numberOfApples == 10)
+            {
+                snakeSpeed = 8.0f;
+            }
+
+            if (numberOfApples == 20)
+            {
+                snakeSpeed = 12.0f;
+            }
         }
     }
 
@@ -119,7 +132,7 @@ public class SnakeHead : MonoBehaviour
     // metoda zostanie przekazana do Wall
     public void SnakeRestart()
     {
-        if(numberOfApples > PlayerPrefs.GetInt("MaxApplesNumber") && SceneManager.GetActiveScene().name.Equals("Challenge"))
+        if(numberOfApples > PlayerPrefs.GetInt("MaxApplesNumber") && SceneManager.GetActiveScene().name.Equals("BestOf"))
             PlayerPrefs.SetInt("MaxApplesNumber", numberOfApples);
         snake.Clear();
         transform.position = snakeStartPosition;

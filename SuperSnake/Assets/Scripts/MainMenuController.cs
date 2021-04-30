@@ -11,9 +11,9 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene("Level_1");
     }
 
-    public void StartChallengeGame()
+    public void LoadChallenges()
     {
-        SceneManager.LoadScene("Challenge");
+        SceneManager.LoadScene("ChallengeMenu");
     }
 
     public void LoadGameLevel()
