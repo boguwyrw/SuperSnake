@@ -28,7 +28,10 @@ public class ChallengeGameController : MonoBehaviour
         exitButton.gameObject.SetActive(false);
         Time.timeScale = 0;
 
-        PlayerBestScore();
+        if (PlayerPrefs.HasKey("MaxApplesNumber"))
+            maxApplesNumber = PlayerPrefs.GetInt("MaxApplesNumber");
+        else
+            PlayerPrefs.SetInt("MaxApplesNumber", maxApplesNumber);
     }
 
     private void Update()
@@ -65,9 +68,6 @@ public class ChallengeGameController : MonoBehaviour
 
     private void PlayerBestScore()
     {
-        if (PlayerPrefs.HasKey("MaxApplesNumber"))
-            maxApplesNumber = PlayerPrefs.GetInt("MaxApplesNumber");
-
         if (maxApplesNumber < applesNumber)
             maxApplesNumber = applesNumber;
 

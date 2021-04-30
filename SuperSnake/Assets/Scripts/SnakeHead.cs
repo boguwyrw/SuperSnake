@@ -29,10 +29,7 @@ public class SnakeHead : MonoBehaviour
         snakeStartRotation = transform.rotation;
 
         if (SceneManager.GetActiveScene().name.Equals("Dark"))
-        {
-            numberOfLives = 1;
-            snakeSpeed = 6;
-        }
+            snakeSpeed = 6.8f;
     }
 
     private void Update()
@@ -41,11 +38,6 @@ public class SnakeHead : MonoBehaviour
         ApplesCounting();
         SnakeLives();
         GameOver();
-
-        if (numberOfApples == 0 && !SceneManager.GetActiveScene().name.Equals("Dark"))
-        {
-            snakeSpeed = 4.0f;
-        }
 
         if (numberOfLives <= 0)
             numberOfLives = 0;
@@ -134,10 +126,17 @@ public class SnakeHead : MonoBehaviour
     {
         if(numberOfApples > PlayerPrefs.GetInt("MaxApplesNumber") && SceneManager.GetActiveScene().name.Equals("BestOf"))
             PlayerPrefs.SetInt("MaxApplesNumber", numberOfApples);
+
+        if (numberOfApples > PlayerPrefs.GetInt("MaxDarkApplesNumber") && SceneManager.GetActiveScene().name.Equals("Dark"))
+            PlayerPrefs.SetInt("MaxDarkApplesNumber", numberOfApples);
+
         snake.Clear();
         transform.position = snakeStartPosition;
         transform.rotation = snakeStartRotation;
-        snakeSpeed = 4.0f;
+        if(SceneManager.GetActiveScene().name.Equals("Dark"))
+            snakeSpeed = 6.8f;
+        else
+            snakeSpeed = 4.0f;
         numberOfLives--;
         numberOfApples = 0;
         snake.Add(gameObject);

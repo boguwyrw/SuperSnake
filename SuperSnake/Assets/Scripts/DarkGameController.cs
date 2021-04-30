@@ -19,19 +19,24 @@ public class DarkGameController : MonoBehaviour
     private int maxApplesNumber;
     private int livesNumber;
     private float timeToFindDarkApple;
+    private int numberOfLives;
 
     private void Awake()
     {
         applesNumber = 0;
-        livesNumber = 1;
+        livesNumber = 4;
         maxApplesNumber = 0;
         timeToFindDarkApple = 20.0f;
+        numberOfLives = 0;
 
         resumeButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
         Time.timeScale = 0;
 
-        PlayerBestScore();
+        if (PlayerPrefs.HasKey("MaxDarkApplesNumber"))
+            maxApplesNumber = PlayerPrefs.GetInt("MaxDarkApplesNumber");
+        else
+            PlayerPrefs.SetInt("MaxDarkApplesNumber", maxApplesNumber);
     }
 
     private void Update()
@@ -51,16 +56,18 @@ public class DarkGameController : MonoBehaviour
         }
 
         applesNumber = snakeHead.GetNumberOfApples();
-        livesNumber = SnakeHead.numberOfLives;
-
         PlayerBestScore();
+
+        numberOfLives = livesNumber;
+        if(numberOfLives > SnakeHead.numberOfLives)
+            timeToFindDarkApple = 20.0f;
+
+        livesNumber = SnakeHead.numberOfLives;
 
         FindDarkAppleTime();
 
         if (livesNumber <= 0)
         {
-            PlayerPrefs.SetInt("MaxDarkApplesNumber", maxApplesNumber);
-
             if (applesNumber != 1)
                 informationText.text = "Twój rekord to: " + maxApplesNumber.ToString() + " jabłek";
             else if (applesNumber == 1)
@@ -73,9 +80,6 @@ public class DarkGameController : MonoBehaviour
 
     private void PlayerBestScore()
     {
-        if (PlayerPrefs.HasKey("MaxDarkApplesNumber"))
-            maxApplesNumber = PlayerPrefs.GetInt("MaxDarkApplesNumber");
-
         if (maxApplesNumber < applesNumber)
             maxApplesNumber = applesNumber;
 
@@ -88,8 +92,8 @@ public class DarkGameController : MonoBehaviour
         
         if (timeToFindDarkApple <= 0.0f)
         {
-            SnakeHead.numberOfLives = 0;
-            timeToFindDarkApple = 0.0f;
+            timeToFindDarkApple = 20.0f;
+            snakeHead.SnakeRestart();
         }
 
         timeToFindDarkAppleText.text = "Czas: " + timeToFindDarkApple.ToString("F1");
