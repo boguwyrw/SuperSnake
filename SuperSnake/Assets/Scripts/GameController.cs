@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     private int applesNumber;
     private int livesNumber;
     private int winerPoints;
+    private int openLevel;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class GameController : MonoBehaviour
         applesNumber = 0;
         livesNumber = 4;
         winerPoints = 30;
+        openLevel = 1;
 
         Time.timeScale = 0;
     }
@@ -51,8 +53,36 @@ public class GameController : MonoBehaviour
         if (applesNumber == winerPoints)
         {
             informationText.text = "GRATULACJE!!!";
-            nextLevelButton.gameObject.SetActive(true);
-            
+
+            string sceneName = SceneManager.GetActiveScene().name;
+
+            switch(sceneName)
+            {
+                case "Level_1":
+                    openLevel = 2;
+                    if (PlayerPrefs.HasKey("Levels"))
+                    {
+                        if(PlayerPrefs.GetInt("Levels") < openLevel)
+                            PlayerPrefs.SetInt("Levels", openLevel);
+                    }
+                    else
+                        PlayerPrefs.SetInt("Levels", openLevel);
+                    break;
+                case "Level_2":
+                    openLevel = 3;
+                    PlayerPrefs.SetInt("Levels", openLevel);
+                    break;
+                case "Level_3":
+                    openLevel = 3;
+                    PlayerPrefs.SetInt("Levels", openLevel);
+                    break;
+            }
+
+            if(!sceneName.Equals("Level_3"))
+                nextLevelButton.gameObject.SetActive(true);
+            else
+                exitButton.gameObject.SetActive(true);
+
             Time.timeScale = 0;
         }
         if (livesNumber <= 0)

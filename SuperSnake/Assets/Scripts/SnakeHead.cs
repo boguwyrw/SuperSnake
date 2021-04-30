@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SnakeHead : MonoBehaviour
 {
@@ -118,7 +119,7 @@ public class SnakeHead : MonoBehaviour
     // metoda zostanie przekazana do Wall
     public void SnakeRestart()
     {
-        if(numberOfApples > PlayerPrefs.GetInt("MaxApplesNumber"))
+        if(numberOfApples > PlayerPrefs.GetInt("MaxApplesNumber") && SceneManager.GetActiveScene().name.Equals("Challenge"))
             PlayerPrefs.SetInt("MaxApplesNumber", numberOfApples);
         snake.Clear();
         transform.position = snakeStartPosition;

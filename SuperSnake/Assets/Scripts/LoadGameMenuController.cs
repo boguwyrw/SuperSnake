@@ -1,10 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LoadGameMenuController : MonoBehaviour
 {
+    [SerializeField] private List<Button> levelsButtons = null;
+
+    private int availableLevels;
+
+    private void Awake()
+    {
+        availableLevels = 1;
+
+        if (PlayerPrefs.HasKey("Levels"))
+        {
+            availableLevels = PlayerPrefs.GetInt("Levels");
+            
+            for (int i = 0; i < availableLevels; i++)
+            {
+                levelsButtons[i].interactable = true;
+            }
+        }
+    }
+
     public void StartGameLevel_1()
     {
         SceneManager.LoadScene("Level_1");
