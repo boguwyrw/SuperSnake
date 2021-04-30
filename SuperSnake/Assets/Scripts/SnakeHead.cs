@@ -153,12 +153,14 @@ public class SnakeHead : MonoBehaviour
 
     public void TurnRight()
     {
-        transform.Rotate(new Vector3(0, 90, 0));
+        if (Time.timeScale == 1)
+            transform.Rotate(new Vector3(0, 90, 0));
     }
 
     public void TurnLeft()
     {
-        transform.Rotate(new Vector3(0, -90, 0));
+        if (Time.timeScale == 1)
+            transform.Rotate(new Vector3(0, -90, 0));
     }
 
     public void GameWasRestarted()

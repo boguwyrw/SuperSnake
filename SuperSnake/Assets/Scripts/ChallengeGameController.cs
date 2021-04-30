@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ChallengeGameController : MonoBehaviour
 {
     [SerializeField] private Button startButton = null;
+    [SerializeField] private Button resumeButton = null;
     [SerializeField] private Button exitButton = null;
     [SerializeField] private Text informationText = null;
     [SerializeField] private Text bestScoreText = null;
@@ -22,7 +23,8 @@ public class ChallengeGameController : MonoBehaviour
         applesNumber = 0;
         livesNumber = 4;
         maxApplesNumber = 0;
-        
+
+        resumeButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
         Time.timeScale = 0;
 
@@ -81,6 +83,20 @@ public class ChallengeGameController : MonoBehaviour
     {
         Time.timeScale = 1;
         startButton.gameObject.SetActive(false);
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        resumeButton.gameObject.SetActive(true);
+        exitButton.gameObject.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        resumeButton.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
     }
 
     public void ExitGame()

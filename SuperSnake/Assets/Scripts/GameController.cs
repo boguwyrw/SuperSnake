@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
 
     [SerializeField] private Button startButton = null;
+    [SerializeField] private Button resumeButton = null;
     [SerializeField] private Button exitButton = null;
     [SerializeField] private Button nextLevelButton = null;
     [SerializeField] private Text informationText = null;
@@ -21,8 +22,9 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        nextLevelButton.transform.position = new Vector3(0.5f * Screen.width, 0.4f * Screen.height, 0.0f);
+        nextLevelButton.transform.position = new Vector3(0.5f * Screen.width, 0.32f * Screen.height, 0.0f);
         nextLevelButton.gameObject.SetActive(false);
+        resumeButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
 
         applesNumber = 0;
@@ -113,6 +115,20 @@ public class GameController : MonoBehaviour
     public void LoadLevel_3()
     {
         SceneManager.LoadScene("Level_3");
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        resumeButton.gameObject.SetActive(true);
+        exitButton.gameObject.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        resumeButton.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
     }
 
     public void ExitGame()
