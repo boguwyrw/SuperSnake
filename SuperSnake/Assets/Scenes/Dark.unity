@@ -1258,7 +1258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f830e158d6b344cb72d2f9fd0314fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snakeBody: {fileID: 497788606547204952, guid: a203e101616f73644a5164b425140240,
+  snakeBody: {fileID: 9085927198012956523, guid: 1388cdd3dc36a544eb7ec0d88104989e,
     type: 3}
   numberOfApplesText: {fileID: 7932638704323844616}
   snakeLivesText: {fileID: 7932638702746920654}

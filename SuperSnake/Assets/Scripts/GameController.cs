@@ -110,12 +110,14 @@ public class GameController : MonoBehaviour
     public void LoadLevel_2()
     {
         SnakeHead.snakeSpeed = 4;
+        SnakeHead.numberOfLives = 4;
         SceneManager.LoadScene("Level_2");
     }
 
     public void LoadLevel_3()
     {
         SnakeHead.snakeSpeed = 4;
+        SnakeHead.numberOfLives = 4;
         SceneManager.LoadScene("Level_3");
     }
 
