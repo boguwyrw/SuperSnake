@@ -695,6 +695,7 @@ GameObject:
   - component: {fileID: 4690486158529489112}
   - component: {fileID: 4690486158529489115}
   - component: {fileID: 4690486158529489114}
+  - component: {fileID: 4690486158529489110}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -722,6 +723,19 @@ RectTransform:
   m_AnchoredPosition: {x: -70, y: -70}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4690486158529489110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4690486158529489108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d501ee680e6fe64bb222b41cb7bf2f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  darkGameController: {fileID: 344026737}
 --- !u!222 &4690486158529489112
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -769,18 +783,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4690486158529489115}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 344026737}
-        m_MethodName: PauseGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &4690486158529489115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1475,7 +1478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f830e158d6b344cb72d2f9fd0314fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snakeBody: {fileID: 9085927198012956523, guid: 1388cdd3dc36a544eb7ec0d88104989e,
+  snakeBody: {fileID: 5936563925810904986, guid: 4c7d0a7181e755440aecaa1c2f2dbb27,
     type: 3}
   numberOfApplesText: {fileID: 7932638704323844616}
   snakeLivesText: {fileID: 7932638702746920654}
@@ -2327,6 +2330,7 @@ GameObject:
   - component: {fileID: 7932638703489465952}
   - component: {fileID: 7932638703489465953}
   - component: {fileID: 7932638703489465982}
+  - component: {fileID: 7932638703489465981}
   m_Layer: 5
   m_Name: RightButton
   m_TagString: Untagged
@@ -2334,6 +2338,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7932638703489465981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932638703489465980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9fe82e610f40ca4cb31c08707f04c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snakeHead: {fileID: 6400084854317869723}
 --- !u!114 &7932638703489465982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2373,18 +2390,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7932638703489465953}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6400084854317869723}
-        m_MethodName: TurnRight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!224 &7932638703489465983
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2514,6 +2520,7 @@ GameObject:
   - component: {fileID: 7932638703641764745}
   - component: {fileID: 7932638703641764742}
   - component: {fileID: 7932638703641764743}
+  - component: {fileID: 7932638703641764744}
   m_Layer: 5
   m_Name: LeftButton
   m_TagString: Untagged
@@ -2587,18 +2594,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7932638703641764742}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6400084854317869723}
-        m_MethodName: TurnLeft
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &7932638703641764744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932638703641764741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dea1b72692d6cd4f86ca037853aa9d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snakeHead: {fileID: 6400084854317869723}
 --- !u!222 &7932638703641764745
 CanvasRenderer:
   m_ObjectHideFlags: 0
