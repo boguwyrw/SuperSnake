@@ -56,6 +56,9 @@ public class GameController : MonoBehaviour
         {
             informationText.text = "GRATULACJE!!!";
 
+            // tu mogę dodać prośbę (polecenie) o reklamę
+            //rewardedAd.OnAdOpening += HandleRewardedAdOpening;
+
             string sceneName = SceneManager.GetActiveScene().name;
 
             switch(sceneName)
