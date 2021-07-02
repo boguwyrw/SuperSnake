@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class SoundOnOff : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private SoundController soundController;
     [SerializeField] private Sprite soundOn;
     [SerializeField] private Sprite soundOff;
 
@@ -25,11 +27,15 @@ public class SoundOnOff : MonoBehaviour, IPointerDownHandler
         {
             audioSource.volume = 0.0f;
             soundImage.sprite = soundOff;
+            if (!SceneManager.GetActiveScene().name.Equals("Dark"))
+                soundController.soundIsMute = true;
         }
         else
         {
             audioSource.volume = audioSourceStartVolume;
             soundImage.sprite = soundOn;
+            if (!SceneManager.GetActiveScene().name.Equals("Dark"))
+                soundController.soundIsMute = false;
         }
     }
 }

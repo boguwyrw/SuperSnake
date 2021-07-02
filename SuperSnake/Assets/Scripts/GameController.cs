@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     private int livesNumber;
     private int winerPoints;
     private int openLevel;
+    private float positionRange;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class GameController : MonoBehaviour
         livesNumber = 4;
         winerPoints = 30;
         openLevel = 1;
+        positionRange = 16.4f;
 
         Time.timeScale = 0;
     }
@@ -44,8 +46,8 @@ public class GameController : MonoBehaviour
 
         if (transform.childCount == 0 && applesNumber < winerPoints-1)
         {
-            float positionX = Random.Range(-16.5f, 16.5f);
-            float positionZ = Random.Range(-16.5f, 16.5f);
+            float positionX = Random.Range(-positionRange, positionRange);
+            float positionZ = Random.Range(-positionRange, positionRange);
             GameObject appleClone = Instantiate(apple, new Vector3(positionX, 0.5f, positionZ), transform.rotation);
             appleClone.transform.parent = gameObject.transform;
         }
@@ -55,9 +57,6 @@ public class GameController : MonoBehaviour
         if (applesNumber == winerPoints)
         {
             informationText.text = "GRATULACJE!!!";
-
-            // tu mogę dodać prośbę (polecenie) o reklamę
-            //rewardedAd.OnAdOpening += HandleRewardedAdOpening;
 
             string sceneName = SceneManager.GetActiveScene().name;
 

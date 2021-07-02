@@ -437,6 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 749488676}
+  soundController: {fileID: 0}
   soundOn: {fileID: 21300000, guid: 44e5d20fdd85e794aab331b7780f00ed, type: 3}
   soundOff: {fileID: 21300000, guid: 1cc937919f3697e488d6547ca37a96db, type: 3}
 --- !u!1 &618847986
@@ -1752,7 +1753,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0

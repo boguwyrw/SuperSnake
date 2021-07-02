@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SoundController : MonoBehaviour
 {
+    public bool soundIsMute = false;
+
     private AudioSource audioSource;
     private bool madeFirstChange;
     private bool madeSecondChange;
+    private float startVolumeLevel;
 
     private void Start()
     {
@@ -15,6 +18,7 @@ public class SoundController : MonoBehaviour
         audioSource.Play();
         madeFirstChange = false;
         madeSecondChange = false;
+        startVolumeLevel = audioSource.volume;
     }
 
     private void Update()
@@ -57,7 +61,8 @@ public class SoundController : MonoBehaviour
 
     private IEnumerator VolumeUp()
     {
-        yield return new WaitForSeconds(0.1f);
-        audioSource.volume = 0.8f;
+        yield return new WaitForSeconds(0.08f);
+        if (!soundIsMute)
+            audioSource.volume = startVolumeLevel;
     }
 }
