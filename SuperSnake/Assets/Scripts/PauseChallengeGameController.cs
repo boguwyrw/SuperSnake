@@ -9,6 +9,7 @@ public class PauseChallengeGameController : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        challengeGameController.PauseGame();
+        if (Time.timeScale == 1)
+            challengeGameController.PauseGame();
     }
 }
