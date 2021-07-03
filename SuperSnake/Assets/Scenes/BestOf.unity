@@ -1598,7 +1598,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6288428118010905817}
         m_MethodName: GameWasRestarted
         m_Mode: 1
         m_Arguments:
