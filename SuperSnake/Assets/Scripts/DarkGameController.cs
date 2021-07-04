@@ -132,9 +132,17 @@ public class DarkGameController : MonoBehaviour
 
     public void ConsequencesQuestion()
     {
-        questionPanel.SetActive(true);
-        resumeButton.gameObject.SetActive(false);
-        exitButton.gameObject.SetActive(false);
+        if (SnakeHead.numberOfLives > 0)
+        {
+            questionPanel.SetActive(true);
+            resumeButton.gameObject.SetActive(false);
+            exitButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            ExitGame();
+            snakeHead.GameWasRestarted();
+        }
     }
 
     public void ExitGame()
