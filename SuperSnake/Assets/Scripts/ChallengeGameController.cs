@@ -12,20 +12,24 @@ public class ChallengeGameController : MonoBehaviour
     [SerializeField] private Text informationText = null;
     [SerializeField] private Text bestScoreText = null;
     [SerializeField] private GameObject apple = null;
+    [SerializeField] private GameObject questionPanel = null;
     [SerializeField] private SnakeHead snakeHead = null;
 
     private int applesNumber;
     private int maxApplesNumber;
     private int livesNumber;
+    private float positionRange;
 
     private void Awake()
     {
         applesNumber = 0;
-        livesNumber = 4;
         maxApplesNumber = 0;
+        livesNumber = 4;
+        positionRange = 16.4f;
 
         resumeButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
+        questionPanel.SetActive(false);
         Time.timeScale = 0;
 
         if (PlayerPrefs.HasKey("MaxApplesNumber"))
@@ -43,8 +47,8 @@ public class ChallengeGameController : MonoBehaviour
 
         if (transform.childCount == 0)
         {
-            float positionX = Random.Range(-16.5f, 16.5f);
-            float positionZ = Random.Range(-16.5f, 16.5f);
+            float positionX = Random.Range(-positionRange, positionRange);
+            float positionZ = Random.Range(-positionRange, positionRange);
             GameObject appleClone = Instantiate(apple, new Vector3(positionX, 0.5f, positionZ), transform.rotation);
             appleClone.transform.parent = gameObject.transform;
         }
@@ -90,11 +94,20 @@ public class ChallengeGameController : MonoBehaviour
         Time.timeScale = 0;
         resumeButton.gameObject.SetActive(true);
         exitButton.gameObject.SetActive(true);
+        if (questionPanel.activeSelf)
+            questionPanel.SetActive(false);
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        resumeButton.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
+    }
+
+    public void ConsequencesQuestion()
+    {
+        questionPanel.SetActive(true);
         resumeButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
     }

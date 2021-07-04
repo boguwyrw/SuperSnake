@@ -13,24 +13,28 @@ public class DarkGameController : MonoBehaviour
     [SerializeField] private Text bestScoreText = null;
     [SerializeField] private Text timeToFindDarkAppleText = null;
     [SerializeField] private GameObject darkApple = null;
+    [SerializeField] private GameObject questionPanel = null;
     [SerializeField] private SnakeHead snakeHead = null;
 
     private int applesNumber;
     private int maxApplesNumber;
     private int livesNumber;
-    private float timeToFindDarkApple;
     private int numberOfLives;
+    private float timeToFindDarkApple;
+    private float positionRange;
 
     private void Awake()
     {
         applesNumber = 0;
         livesNumber = 4;
         maxApplesNumber = 0;
-        timeToFindDarkApple = 20.0f;
         numberOfLives = 0;
+        timeToFindDarkApple = 20.0f;
+        positionRange = 16.4f;
 
         resumeButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
+        questionPanel.SetActive(false);
         Time.timeScale = 0;
 
         if (PlayerPrefs.HasKey("MaxDarkApplesNumber"))
@@ -48,8 +52,8 @@ public class DarkGameController : MonoBehaviour
 
         if (transform.childCount == 0)
         {
-            float positionX = Random.Range(-16.5f, 16.5f);
-            float positionZ = Random.Range(-16.5f, 16.5f);
+            float positionX = Random.Range(-positionRange, positionRange);
+            float positionZ = Random.Range(-positionRange, positionRange);
             GameObject appleClone = Instantiate(darkApple, new Vector3(positionX, 0.5f, positionZ), transform.rotation);
             appleClone.transform.parent = gameObject.transform;
             timeToFindDarkApple = 20.0f;
@@ -115,11 +119,20 @@ public class DarkGameController : MonoBehaviour
         Time.timeScale = 0;
         resumeButton.gameObject.SetActive(true);
         exitButton.gameObject.SetActive(true);
+        if (questionPanel.activeSelf)
+            questionPanel.SetActive(false);
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        resumeButton.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
+    }
+
+    public void ConsequencesQuestion()
+    {
+        questionPanel.SetActive(true);
         resumeButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
     }

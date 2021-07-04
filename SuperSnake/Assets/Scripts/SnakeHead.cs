@@ -29,7 +29,9 @@ public class SnakeHead : MonoBehaviour
         snakeStartRotation = transform.rotation;
 
         if (SceneManager.GetActiveScene().name.Equals("Dark"))
-            snakeSpeed = 6.8f;
+            snakeSpeed = 7.2f;
+        else
+            snakeSpeed = 4.0f;
     }
 
     private void Update()
@@ -134,7 +136,7 @@ public class SnakeHead : MonoBehaviour
         transform.position = snakeStartPosition;
         transform.rotation = snakeStartRotation;
         if(SceneManager.GetActiveScene().name.Equals("Dark"))
-            snakeSpeed = 6.8f;
+            snakeSpeed = 7.2f;
         else
             snakeSpeed = 4.0f;
         numberOfLives--;
